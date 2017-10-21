@@ -1,4 +1,4 @@
-{% set version = '0.1.5' %}
+{% set version = '0.1.6' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/gdtools_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/gdtools/gdtools_{{ version }}.tar.gz
-  sha256: 7323714ce3be3e64291300f331f56d13cc5c669156ca9d217c63c4fc12e8c927
+  sha256: c5c1d9bea7d97ecd62116ee8119c6fb889060469900449a4653c02ac11b37c80
 
 build:
   number: 0
@@ -25,7 +25,7 @@ build:
 requirements:
   build:
     - r-base
-    - r-rcpp
+    - r-rcpp >=0.12.12
     - r-withr
     - pkg-config           # [not win]
     - posix                # [win]
@@ -39,7 +39,7 @@ requirements:
 
   run:
     - r-base
-    - r-rcpp
+    - r-rcpp >=0.12.12
     - r-withr
     - libgcc  # [not win]
     - freetype 2.7|2.7.*
