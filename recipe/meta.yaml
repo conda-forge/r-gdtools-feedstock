@@ -31,6 +31,7 @@ requirements:
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
+    - r-rcurl              # [win]
     - freetype 2.7|2.7.*
     - xorg-libxrender
     - xorg-libxext
