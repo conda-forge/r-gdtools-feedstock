@@ -15,7 +15,8 @@ source:
   sha256: c5c1d9bea7d97ecd62116ee8119c6fb889060469900449a4653c02ac11b37c80
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
 
   rpaths:
@@ -24,14 +25,17 @@ build:
 
 requirements:
   build:
+    - pkg-config           # [not win]
+    - posix                # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('cxx') }}        # [unix]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+  host:
     - r-base
     - r-rcpp >=0.12.12
     - r-withr
-    - pkg-config           # [not win]
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
-    - freetype 2.7|2.7.*
+    - freetype
     - xorg-libxrender
     - xorg-libxext
     - xorg-libxdmcp
@@ -41,8 +45,7 @@ requirements:
     - r-base
     - r-rcpp >=0.12.12
     - r-withr
-    - libgcc  # [not win]
-    - freetype 2.7|2.7.*
+    - freetype
     - xorg-libxrender
     - xorg-libxext
     - xorg-libxdmcp
