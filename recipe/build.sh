@@ -1,5 +1,8 @@
 #!/bin/bash
-
-export PKG_CFLAGS="-I$PREFIX/include/cairo -I$PREFIX/include/fontconfig -I$PREFIX/include/freetype2 -I$PREFIX/include $PKG_CFLAGS"
-
-$R CMD INSTALL --build .
+if [[ $target_platform =~ linux.* ]] || [[ $target_platform == win-32 ]] || [[ $target_platform == win-64 ]] || [[ $target_platform == osx-64 ]]; then
+  export DISABLE_AUTOBREW=1
+  $R CMD INSTALL --build .
+else
+  mkdir -p $PREFIX/lib/R/library/gdtools
+  mv * $PREFIX/lib/R/library/gdtools
+fi
