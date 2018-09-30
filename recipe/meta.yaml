@@ -38,11 +38,13 @@ requirements:
     - {{posix}}zip               # [win]
   host:
     - r-base
+    - r-curl
     - r-rcpp >=0.12.12
     - r-withr
     - cairo
   run:
     - r-base
+    - r-curl
     - {{native}}gcc-libs         # [win]
     - r-rcpp >=0.12.12
     - r-withr
