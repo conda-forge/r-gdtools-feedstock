@@ -14,7 +14,7 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -40,6 +40,8 @@ requirements:
     - r-rcpp >=0.12.12
     - r-systemfonts >=0.1.1
     - cairo
+    # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
+    - glib
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
