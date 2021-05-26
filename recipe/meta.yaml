@@ -16,7 +16,7 @@ build:
   merge_build_host: true  # [win]
   ignore_run_exports_from:
     # Only used as a transitive dep from cairo but not linked directly.
-    - glib
+    - glib *
   number: 2
   rpaths:
     - lib/R/lib/
@@ -44,7 +44,7 @@ requirements:
     - r-systemfonts >=0.1.1
     - cairo
     # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
-    - glib
+    - glib *
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
