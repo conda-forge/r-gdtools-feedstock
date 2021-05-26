@@ -14,7 +14,10 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  ignore_run_exports_from:
+    # Only used as a transitive dep from cairo but not linked directly.
+    - glib *
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -40,6 +43,8 @@ requirements:
     - r-rcpp >=0.12.12
     - r-systemfonts >=0.1.1
     - cairo
+    # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
+    - glib *
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
@@ -54,10 +59,12 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=gdtools
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Useful tools for writing vector graphics devices.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+    - LICENSE
 
 extra:
   recipe-maintainers:
