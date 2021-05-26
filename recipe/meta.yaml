@@ -14,6 +14,9 @@ source:
 
 build:
   merge_build_host: true  # [win]
+  ignore_run_exports_from:
+    # Only used as a transitive dep from cairo but not linked directly.
+    - glib
   number: 2
   rpaths:
     - lib/R/lib/
