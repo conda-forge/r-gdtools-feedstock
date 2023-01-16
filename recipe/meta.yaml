@@ -25,12 +25,15 @@ build:
 requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-gfonts                   # [build_platform != target_platform]
+    - r-htmltools                # [build_platform != target_platform]
+    - r-memoise                  # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
     - r-systemfonts              # [build_platform != target_platform]
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -49,6 +52,8 @@ requirements:
     - r-rcpp >=0.12.12
     - r-systemfonts >=0.1.1
     - cairo
+    - fontconfig
+    - freetype
     # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
     - glib *
   run:
