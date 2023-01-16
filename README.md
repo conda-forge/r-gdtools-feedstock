@@ -9,6 +9,8 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-gdtools-feeds
 
 Summary: Useful tools for writing vector graphics devices.
 
+Development: https://github.com/davidgohel/gdtools
+
 Current build status
 ====================
 
