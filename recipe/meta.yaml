@@ -1,4 +1,4 @@
-{% set version = "0.2.4" %}
+{% set version = "0.3.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,14 +10,14 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gdtools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gdtools/gdtools_{{ version }}.tar.gz
-  sha256: 32884ce1aa49be1fd897b4f808cdbc8727cb0d881ff8961e899220b2cac33028
+  sha256: 548662b38d641acb5c7d1f1f723bcad907ffa3620175ecf7ad7dc7f6b6fa7ed2
 
 build:
   merge_build_host: true  # [win]
   ignore_run_exports_from:
     # Only used as a transitive dep from cairo but not linked directly.
     - glib *
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
