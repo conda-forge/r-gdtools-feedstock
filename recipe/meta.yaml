@@ -1,4 +1,4 @@
-{% set version = "0.2.4" %}
+{% set version = "0.3.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,14 +10,14 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gdtools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gdtools/gdtools_{{ version }}.tar.gz
-  sha256: 32884ce1aa49be1fd897b4f808cdbc8727cb0d881ff8961e899220b2cac33028
+  sha256: 548662b38d641acb5c7d1f1f723bcad907ffa3620175ecf7ad7dc7f6b6fa7ed2
 
 build:
   merge_build_host: true  # [win]
   ignore_run_exports_from:
     # Only used as a transitive dep from cairo but not linked directly.
     - glib *
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -25,12 +25,15 @@ build:
 requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-gfonts                   # [build_platform != target_platform]
+    - r-htmltools                # [build_platform != target_platform]
+    - r-memoise                  # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
     - r-systemfonts              # [build_platform != target_platform]
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -43,14 +46,22 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-gfonts
+    - r-htmltools
+    - r-memoise
     - r-rcpp >=0.12.12
     - r-systemfonts >=0.1.1
     - cairo
+    - fontconfig
+    - freetype
     # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
     - glib *
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-gfonts
+    - r-htmltools
+    - r-memoise
     - r-rcpp >=0.12.12
     - r-systemfonts >=0.1.1
     - cairo
@@ -62,6 +73,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=gdtools
+  dev_url: https://github.com/davidgohel/gdtools
   license: GPL-3.0-only
   summary: Useful tools for writing vector graphics devices.
   license_family: GPL3
@@ -72,24 +84,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-
-# Package: gdtools
-# Version: 0.2.0
-# License: GPL-3 | file LICENSE
-# Title: Utilities for Graphical Rendering
-# Description: Useful tools for writing vector graphics devices.
-# Authors@R: c( person("David", "Gohel", , "david.gohel@ardata.fr", c("aut", "cre")), person("Hadley", "Wickham", , "hadley@rstudio.com", "aut"), person("Lionel", "Henry", , "lionel@rstudio.com", "aut"), person("Jeroen", "Ooms", role = "aut", email = "jeroen@berkeley.edu", comment = c(ORCID = "0000-0002-4035-0289")), person("Yixuan", "Qiu", role = "ctb"), person("R Core Team", role = "cph", comment = "Cairo code from X11 device"), person("RStudio", role = "cph") )
-# LazyData: TRUE
-# Imports: Rcpp (>= 0.12.12), systemfonts (>= 0.1.1)
-# Suggests: htmltools, testthat, fontquiver (>= 0.2.0), curl
-# Encoding: UTF-8
-# LinkingTo: Rcpp
-# SystemRequirements: cairo, freetype2
-# BugReports: https://github.com/davidgohel/gdtools/issues
-# RoxygenNote: 6.1.1
-# NeedsCompilation: yes
-# Packaged: 2019-09-03 15:56:46 UTC; davidgohel
-# Author: David Gohel [aut, cre], Hadley Wickham [aut], Lionel Henry [aut], Jeroen Ooms [aut] (<https://orcid.org/0000-0002-4035-0289>), Yixuan Qiu [ctb], R Core Team [cph] (Cairo code from X11 device), RStudio [cph]
-# Maintainer: David Gohel <david.gohel@ardata.fr>
-# Repository: CRAN
-# Date/Publication: 2019-09-03 16:20:02 UTC
