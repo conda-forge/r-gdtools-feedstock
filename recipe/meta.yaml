@@ -24,12 +24,14 @@ build:
 
 requirements:
   build:
-    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
-    - r-gfonts                   # [build_platform != target_platform]
-    - r-htmltools                # [build_platform != target_platform]
-    - r-memoise                  # [build_platform != target_platform]
-    - r-rcpp                     # [build_platform != target_platform]
-    - r-systemfonts              # [build_platform != target_platform]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-curl                       # [build_platform != target_platform]
+    - r-fontquiver                 # [build_platform != target_platform]
+    - r-gfonts                     # [build_platform != target_platform]
+    - r-htmltools                  # [build_platform != target_platform]
+    - r-memoise                    # [build_platform != target_platform]
+    - r-rcpp                       # [build_platform != target_platform]
+    - r-systemfonts                # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
     - {{ compiler('cxx') }}        # [not win]
@@ -46,6 +48,8 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-curl
+    - r-fontquiver >=0.2.0
     - r-gfonts
     - r-htmltools
     - r-memoise
@@ -59,6 +63,8 @@ requirements:
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-curl
+    - r-fontquiver >=0.2.0
     - r-gfonts
     - r-htmltools
     - r-memoise
