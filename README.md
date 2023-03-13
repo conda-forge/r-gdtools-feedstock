@@ -1,11 +1,24 @@
+About r-gdtools-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-gdtools-feedstock/blob/main/LICENSE.txt)
+
 About r-gdtools
-===============
+---------------
 
 Home: https://CRAN.R-project.org/package=gdtools
 
 Package license: GPL-3.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-gdtools-feedstock/blob/main/LICENSE.txt)
+Summary: Useful tools for writing vector graphics devices.
+
+Development: https://github.com/davidgohel/gdtools
+About r-gdtools
+---------------
+
+Home: https://CRAN.R-project.org/package=gdtools
+
+Package license: GPL-3.0-only
 
 Summary: Useful tools for writing vector graphics devices.
 
