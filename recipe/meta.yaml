@@ -1,4 +1,4 @@
-{% set version = "0.3.4" %}
+{% set version = "0.3.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gdtools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gdtools/gdtools_{{ version }}.tar.gz
-  sha256: aad743033fba0b48aa05867df4bc9643802fa82542b559579105e8a0659aaa02
+  sha256: 8cb46da05b87440aadf6958baa37dd9b62d526c558622285146ea7cc4b51b894
 
 build:
   merge_build_host: true  # [win]
