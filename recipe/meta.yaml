@@ -19,15 +19,16 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
-    - r-curl                       # [build_platform != target_platform]
     - r-fontquiver                 # [build_platform != target_platform]
-    - r-gfonts                     # [build_platform != target_platform]
     - r-htmltools                  # [build_platform != target_platform]
-    - r-memoise                    # [build_platform != target_platform]
     - r-rcpp                       # [build_platform != target_platform]
     - r-systemfonts                # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
@@ -48,13 +49,10 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-curl
-    - r-fontquiver >=0.2.0
-    - r-gfonts
-    - r-htmltools
-    - r-memoise
     - r-rcpp >=0.12.12
-    - r-systemfonts >=0.1.1
+    - r-fontquiver >=0.2.0
+    - r-htmltools
+    - r-systemfonts >=1.1.0
     - cairo
     - fontconfig
     - freetype
@@ -62,13 +60,10 @@ requirements:
     - glib *
   run:
     - r-base
-    - r-curl
-    - r-fontquiver >=0.2.0
-    - r-gfonts
-    - r-htmltools
-    - r-memoise
     - r-rcpp >=0.12.12
-    - r-systemfonts >=0.1.1
+    - r-fontquiver >=0.2.0
+    - r-htmltools
+    - r-systemfonts >=1.1.0
     - cairo
 
 test:
@@ -80,7 +75,11 @@ about:
   home: https://CRAN.R-project.org/package=gdtools
   dev_url: https://github.com/davidgohel/gdtools
   license: GPL-3.0-only
-  summary: Useful tools for writing vector graphics devices.
+  summary: Tools are provided to compute metrics of formatted strings and to check the availability
+    of a font.  Another set of functions is provided to support the collection of fonts
+    from 'Google Fonts' in a cache. Their use is simple within 'R Markdown' documents
+    and 'shiny' applications but also with graphic productions generated with the 'ggiraph',
+    'ragg' and 'svglite' packages or with tabular productions from the 'flextable' package.
   license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
