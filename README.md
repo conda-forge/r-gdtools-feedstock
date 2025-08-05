@@ -11,7 +11,7 @@ Home: https://CRAN.R-project.org/package=gdtools
 
 Package license: GPL-3.0-only
 
-Summary: Useful tools for writing vector graphics devices.
+Summary: Tools are provided to compute metrics of formatted strings and to check the availability of a font.  Another set of functions is provided to support the collection of fonts from 'Google Fonts' in a cache. Their use is simple within 'R Markdown' documents and 'shiny' applications but also with graphic productions generated with the 'ggiraph', 'ragg' and 'svglite' packages or with tabular productions from the 'flextable' package.
 
 Development: https://github.com/davidgohel/gdtools
 
@@ -22,7 +22,7 @@ Home: https://CRAN.R-project.org/package=gdtools
 
 Package license: GPL-3.0-only
 
-Summary: Useful tools for writing vector graphics devices.
+Summary: Tools are provided to compute metrics of formatted strings and to check the availability of a font.  Another set of functions is provided to support the collection of fonts from 'Google Fonts' in a cache. Their use is simple within 'R Markdown' documents and 'shiny' applications but also with graphic productions generated with the 'ggiraph', 'ragg' and 'svglite' packages or with tabular productions from the 'flextable' package.
 
 Development: https://github.com/davidgohel/gdtools
 
