@@ -15,7 +15,7 @@ build:
   ignore_run_exports_from:
     # Only used as a transitive dep from cairo but not linked directly.
     - glib *
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
