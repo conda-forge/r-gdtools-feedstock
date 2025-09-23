@@ -61,6 +61,7 @@ requirements:
     - freetype
     # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
     - glib *
+    - xorg-xproto                  # [linux]
     - zlib                         # [linux]
   run:
     - r-base
