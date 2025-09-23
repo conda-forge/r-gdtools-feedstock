@@ -62,6 +62,7 @@ requirements:
     # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
     - glib *
     - xorg-kbproto                 # [linux]
+    - xorg-renderproto             # [linux]
     - xorg-xextproto               # [linux]
     - xorg-xproto                  # [linux]
     - zlib                         # [linux]
