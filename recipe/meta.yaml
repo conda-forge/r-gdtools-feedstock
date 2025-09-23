@@ -15,7 +15,7 @@ build:
   ignore_run_exports_from:
     # Only used as a transitive dep from cairo but not linked directly.
     - glib *
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -56,10 +56,16 @@ requirements:
     - r-rcpp >=0.12.12
     - r-systemfonts >=0.1.1
     - cairo
+    - expat                        # [not win]
     - fontconfig
     - freetype
     # cairo pulls in "libglib" but only "glib" carries GLib's pkg-config files needed here
     - glib *
+    - xorg-kbproto                 # [linux]
+    - xorg-renderproto             # [linux]
+    - xorg-xextproto               # [linux]
+    - xorg-xproto                  # [linux]
+    - zlib                         # [linux]
   run:
     - r-base
     - r-curl
