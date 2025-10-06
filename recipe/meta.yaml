@@ -1,4 +1,4 @@
-{% set version = "0.4.3" %}
+{% set version = "0.4.4" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gdtools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gdtools/gdtools_{{ version }}.tar.gz
-  sha256: 898e94e53c66ba650fb0e8cc08cbee781268893e440a5a8915238e9fcbee2650
+  sha256: 6d13032caa3ba7879bfeae48505def9815fd339444edbeae21233b04a9401ed2
 
 build:
   ignore_run_exports_from:
